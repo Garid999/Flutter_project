@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 void main() {
   runApp(const OutfitHubApp());
 }
@@ -28,8 +27,8 @@ class IntroScreen extends StatelessWidget {
 
           SizedBox.expand(
             child: Image.asset(
-              'assets/images/model.jpg',
-              fit: BoxFit.cover,
+              'assets/images/background.png',
+              fit: BoxFit.contain,
             ),
           ),
 
@@ -60,7 +59,7 @@ class IntroScreen extends StatelessWidget {
 
 
                   const Text(
-                    "OUTFITHUB",
+                    "MANFITHUB",
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 28,
@@ -123,11 +122,25 @@ class IntroScreen extends StatelessWidget {
 
                   const SizedBox(height: 20),
 
-                  const Text(
-                    "SIGN IN",
-                    style: TextStyle(
-                      color: Colors.white,
-                      letterSpacing: 2,
+                  SizedBox(
+                    width: double.infinity,
+                    height: 55,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.white,
+                        foregroundColor: Colors.black,
+                        shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(4),
+                        ),
+                      ),
+                      onPressed: () {},
+                      child: const Text(
+                        "SIGN UP",
+                        style: TextStyle(
+                          letterSpacing: 2,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ),
                   ),
 
