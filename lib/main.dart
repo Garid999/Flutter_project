@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'home_screen.dart';
+import 'signup_screen.dart';
+
 void main() {
   runApp(const OutfitHubApp());
 }
@@ -24,15 +27,16 @@ class IntroScreen extends StatelessWidget {
       body: Stack(
         children: [
 
-
+          // 🔥 Background Image
           SizedBox.expand(
             child: Image.asset(
-              'assets/images/background.png',
-              fit: BoxFit.contain,
+              'assets/images/background.png', // make sure filename matches
+              fit: BoxFit.cover,
+              alignment: Alignment.centerRight,
             ),
           ),
 
-
+          // 🔥 Gradient Overlay
           Container(
             decoration: const BoxDecoration(
               gradient: LinearGradient(
@@ -47,37 +51,33 @@ class IntroScreen extends StatelessWidget {
             ),
           ),
 
-
+          // 🔥 Content
           SafeArea(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
 
                   const SizedBox(height: 60),
-
 
                   const Text(
                     "MANFITHUB",
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 28,
-                      letterSpacing: 4,
                       fontWeight: FontWeight.bold,
+                      letterSpacing: 4,
                     ),
                   ),
 
                   const Spacer(),
-
 
                   const Text(
                     "Command Presence.\nDefine Your Legacy.",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: 30,
-                      fontWeight: FontWeight.w500,
+                      fontSize: 28,
                       height: 1.4,
                     ),
                   ),
@@ -95,7 +95,7 @@ class IntroScreen extends StatelessWidget {
 
                   const SizedBox(height: 40),
 
-
+                  // ✅ GET STARTED BUTTON
                   SizedBox(
                     width: double.infinity,
                     height: 55,
@@ -103,18 +103,20 @@ class IntroScreen extends StatelessWidget {
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.white,
                         foregroundColor: Colors.black,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(4),
-                        ),
                       ),
                       onPressed: () {
-
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const HomeScreen(),
+                          ),
+                        );
                       },
                       child: const Text(
                         "GET STARTED",
                         style: TextStyle(
-                          fontWeight: FontWeight.bold,
                           letterSpacing: 2,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
@@ -122,24 +124,21 @@ class IntroScreen extends StatelessWidget {
 
                   const SizedBox(height: 20),
 
-                  SizedBox(
-                    width: double.infinity,
-                    height: 55,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.white,
-                        foregroundColor: Colors.black,
-                        shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(4),
+                  // ✅ SIGN UP BUTTON
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const SignUpScreen(),
                         ),
-                      ),
-                      onPressed: () {},
-                      child: const Text(
-                        "SIGN UP",
-                        style: TextStyle(
-                          letterSpacing: 2,
-                          fontWeight: FontWeight.bold,
-                        ),
+                      );
+                    },
+                    child: const Text(
+                      "SIGN UP",
+                      style: TextStyle(
+                        color: Colors.white,
+                        letterSpacing: 2,
                       ),
                     ),
                   ),

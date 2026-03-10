@@ -22,3 +22,6 @@ flutter:
 
   assets:
     - assets/images/
+    
+dependencies:
+  http: ^0.13.6
