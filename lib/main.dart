@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'home_screen.dart';
+
+import 'login_screen.dart';
 import 'signup_screen.dart';
 
 void main() {
@@ -11,122 +12,117 @@ class OutfitHubApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
+      title: "ManfitHub",
       debugShowCheckedModeBanner: false,
-      home: IntroScreen(),
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: const WelcomeScreen(),
     );
   }
 }
 
-class IntroScreen extends StatelessWidget {
-  const IntroScreen({super.key});
+class WelcomeScreen extends StatelessWidget {
+  const WelcomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
+
       body: Stack(
         children: [
 
-          // 🔥 Background Image
-          SizedBox.expand(
+          /// Background Image
+          SizedBox(
+            width: double.infinity,
+            height: double.infinity,
             child: Image.asset(
-              'assets/images/background.png', // make sure filename matches
+              "assets/images/background.png",
               fit: BoxFit.cover,
-              alignment: Alignment.centerRight,
             ),
           ),
 
-          // 🔥 Gradient Overlay
+          /// Dark overlay
           Container(
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  Colors.black87,
-                  Colors.transparent,
-                  Colors.black87,
-                ],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-              ),
-            ),
+            color: Colors.black.withOpacity(0.5),
           ),
 
-          // 🔥 Content
-          SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24),
-              child: Column(
-                children: [
+          /// Content
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 30),
 
-                  const SizedBox(height: 60),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
 
-                  const Text(
-                    "MANFITHUB",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 28,
-                      fontWeight: FontWeight.bold,
-                      letterSpacing: 4,
-                    ),
+                const Text(
+                  "ManFitHub",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 40,
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: 3,
                   ),
+                ),
 
-                  const Spacer(),
+                const SizedBox(height: 10),
 
-                  const Text(
-                    "Command Presence.\nDefine Your Legacy.",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 28,
-                      height: 1.4,
-                    ),
+                const Text(
+                  "Men's Fashion Store",
+                  style: TextStyle(
+                    color: Colors.white70,
+                    fontSize: 16,
                   ),
+                ),
 
-                  const SizedBox(height: 16),
+                const SizedBox(height: 40),
 
-                  const Text(
-                    "Complete curated fashion looks",
-                    style: TextStyle(
-                      color: Colors.white70,
-                      fontSize: 14,
-                      letterSpacing: 1,
+                /// GET STARTED BUTTON
+                SizedBox(
+                  width: double.infinity,
+                  height: 55,
+
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.white,
+                      foregroundColor: Colors.black,
                     ),
-                  ),
 
-                  const SizedBox(height: 40),
-
-                  // ✅ GET STARTED BUTTON
-                  SizedBox(
-                    width: double.infinity,
-                    height: 55,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.white,
-                        foregroundColor: Colors.black,
-                      ),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const HomeScreen(),
-                          ),
-                        );
-                      },
-                      child: const Text(
-                        "GET STARTED",
-                        style: TextStyle(
-                          letterSpacing: 2,
-                          fontWeight: FontWeight.bold,
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const LoginScreen(),
                         ),
+                      );
+                    },
+
+                    child: const Text(
+                      "GET STARTED",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        letterSpacing: 2,
                       ),
                     ),
                   ),
+                ),
 
-                  const SizedBox(height: 20),
+                const SizedBox(height: 15),
 
-                  // ✅ SIGN UP BUTTON
-                  GestureDetector(
-                    onTap: () {
+                /// SIGN UP BUTTON
+                SizedBox(
+                  width: double.infinity,
+                  height: 55,
+
+                  child: OutlinedButton(
+                    style: OutlinedButton.styleFrom(
+                      side: const BorderSide(color: Colors.white),
+                      foregroundColor: Colors.white,
+                    ),
+
+                    onPressed: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -134,18 +130,19 @@ class IntroScreen extends StatelessWidget {
                         ),
                       );
                     },
+
                     child: const Text(
                       "SIGN UP",
                       style: TextStyle(
-                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
                         letterSpacing: 2,
                       ),
                     ),
                   ),
+                ),
 
-                  const SizedBox(height: 30),
-                ],
-              ),
+                const SizedBox(height: 50),
+              ],
             ),
           ),
         ],

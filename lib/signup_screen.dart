@@ -32,7 +32,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
     try {
       var response = await http.post(
-        Uri.parse("http://10.0.2.2:3000/register"),
+        Uri.parse("http://localhost:3000/register"),
         headers: {"Content-Type": "application/json"},
         body: jsonEncode({
           "username": _usernameController.text.trim(),
@@ -41,7 +41,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
       );
 
       var data = jsonDecode(response.body);
-
       if (data["message"] == "Registered successfully") {
 
         Navigator.pushReplacement(
